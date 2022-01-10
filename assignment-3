@@ -1,0 +1,169 @@
+#include <iostream>
+using namespace std;
+class employee{
+protected:
+        string empname;
+        int empid;
+        string address;
+        string mail_id;
+        long int mobile_no;
+        float DA;
+        float basic_pay;
+        float gross_salary;
+        float HRA;
+        float PF;
+        float CF;
+
+    public:
+    void accept(){
+        cout<<"EMPLOYEE DETAILS"<<endl;
+        cout<<"Enter the employee's name:"<<endl;
+        cin>>empname;
+        cout<<"Enter the employee ID:"<<endl;
+        cin>>empid;
+        cout<<"Enter the employee's address:"<<endl;
+        cin>>address;
+        cout<<"Enter the employee's email:"<<endl;
+        cin>>mail_id;
+        cout<<"Enter the employee's contact no.:"<<endl;
+        cin>>mobile_no;
+    }
+    void display(){
+        cout<<"EMPLOYEE DETAILS"<<endl;
+        cout<<"Employee's name:"<<empname<<endl;
+        cout<<"Employee ID:"<<empid<<endl;
+        cout<<"Employee's address:"<<address<<endl;
+        cout<<"Employee's email:"<<mail_id<<endl;
+        cout<<"Employee's contact no.:"<<mobile_no<<endl;
+    }
+
+};
+
+
+//chid class programmer
+class programmer : public employee
+{
+    private:
+       float basic_pay;
+public:
+
+    public:
+
+    programmer(){
+        basic_pay=8000;
+
+
+        DA=0.97*basic_pay;
+        HRA=0.10*basic_pay;
+        PF=0.12*basic_pay;
+        CF=0.001*basic_pay;
+        gross_salary= basic_pay+DA+HRA+PF+CF;
+    }
+    void display_gross(){
+        cout<<"the gross slalary of the programmer "<<empname<<" is "<<gross_salary<<endl;
+    }
+};
+
+class team_lead : public employee{
+    private:
+        float basic_salary;
+
+    public:
+    team_lead(){
+        basic_pay=12000;
+        DA=0.97*basic_pay;
+        HRA=0.10*basic_pay;
+        PF=0.12*basic_pay;
+        CF=0.001*basic_pay;
+        gross_salary= basic_pay+DA+HRA+PF+CF;
+    }
+    void display_gross(){
+        cout<<"the gross slalary of team lead "<<empname<<" is "<<gross_salary<<endl;
+    }
+};
+
+class assistant_pm : public employee{
+    private:
+        float basic_salary;
+    public:
+
+    assistant_pm(){
+        basic_pay=14000;
+        DA=0.97*basic_pay;
+        HRA=0.10*basic_pay;
+        PF=0.12*basic_pay;
+        CF=0.001*basic_pay;
+        gross_salary= basic_pay+DA+HRA+PF+CF;
+    }
+    void display_gross(){
+        cout<<"The gross slalary of the assistant project manager "<<empname<<" is "<<gross_salary<<endl;
+    }
+};
+
+class project_manager : public employee{
+    private:
+        float basic_salary;
+    public:
+
+    project_manager(){
+        basic_pay=15000;
+        DA=0.97*basic_pay;
+        HRA=0.10*basic_pay;
+        PF=0.12*basic_pay;
+        CF=0.001*basic_pay;
+        gross_salary= basic_pay+DA+HRA+PF+CF;
+    }
+    void display_gross(){
+        cout<<"The gross slalary of the project manager "<<empname<<" is "<< gross_salary <<endl;
+    }
+};
+
+
+int main()
+{
+    int ch;
+         programmer p1;
+         team_lead t1;
+         assistant_pm ap1;
+         project_manager pm1;
+
+         while(ch != 5)
+         {
+              cout<<"1.Programmer\n2.Team Leader\n3.Assistant Project Manager\n4.Project Manager\n5.Exit\nChoose your position:";
+              cin>>ch;
+
+           switch(ch)
+           {
+              case 1:
+              p1.accept();
+              p1.display();
+              p1.display_gross();
+              break;
+
+              case 2:
+              t1.accept();
+              t1.display();
+              t1.display_gross();
+              break;
+
+              case 3:
+              ap1.accept();
+              ap1.display();
+              ap1.display_gross();
+              break;
+
+              case 4:
+              pm1.accept();
+              pm1.display();
+              pm1.display_gross();
+              break;
+
+              case 5:
+              exit(0);
+           }
+         }
+
+         return 0;
+
+}
+

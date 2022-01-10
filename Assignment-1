@@ -1,0 +1,65 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class passenger{
+public:
+    string name;
+    int age;
+    int flightno;
+    float departuretime;
+    string source;
+    string destination;
+
+    void getdata()
+    {
+        cout<<"Enter Name:";
+        cin>>name;
+        cin.ignore();
+        cout<<"Age:";
+        cin>>age;
+        cout<<"Enter the flight no:";
+        cin>>flightno;
+        cout<<"Departure time:";
+        cin>>departuretime;
+        cout<<"Enter Source: ";
+        cin.ignore();
+        cin>>source;
+        cin.ignore();
+        cout<<"Destination:";
+        cin>>destination;
+    }
+
+    void putdata()
+    {
+        cout<<"Name:"<<name<<endl;
+
+        cout<<"Age:"<<age<<endl;
+
+        cout<<"Flight no.:"<<flightno<<endl;
+
+        cout<<"Departure Time:"<<departuretime<<endl;
+
+        cout<<"Source:"<<source<<endl;
+
+        cout<<"Destination:"<<destination<<endl;
+
+    }
+
+};
+
+int main()
+{
+    passenger st[3];
+    for (int i=0;i<3;i++)
+    {
+        cout<<"Enter passenger details: "<<i+1<<endl;
+        st[i].getdata();
+    }
+    for (int i=0;i<3;i++)
+    {
+        cout<<"Enter passenger details: "<<i+1;
+        st[i].putdata();
+    }
+    return 0;
+}

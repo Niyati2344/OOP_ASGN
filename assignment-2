@@ -1,0 +1,89 @@
+#include<iostream>
+using namespace std;
+
+class employee
+{
+private:
+    string employee_name;
+    static int emp_id;
+    long int contact_no;
+    string qualification;
+    string address;
+    float salary;
+public:                //constructor is to be defined in publlic
+    employee()
+    {
+        employee_name="";
+        emp_id++;
+        address="";
+        salary=0.0;
+        contact_no=0;
+        qualification="";
+    }
+
+    employee(string name,long int number, string quali, string add, float sal)
+    {
+        employee_name=name;
+        emp_id++;
+        address=add;
+        salary= sal;
+        contact_no= number;
+        qualification= quali;
+
+    }
+
+    employee(employee &e)
+    {
+        employee_name=e.employee_name;
+        emp_id++;
+        address= e.address;
+        salary= e.salary;
+        contact_no= e.contact_no;
+        qualification= e.qualification;
+    }
+
+    ~employee()          //cannot be overloaded or inherited
+    {
+        cout<<"employee removed is: "<<emp_id<<endl;
+        emp_id--;
+    }
+
+//inline function--> calling statement will be replaced at the time of compilation
+//code runs faster if it has inline function
+    inline void display();
+};
+
+inline void employee::display()
+{
+    cout<<"**EMPLOYEE DETAILS**"<<endl;
+    cout<<"Enter employee Name: "<<employee_name<<endl;
+    cout<<"Enter employee ID: "<<emp_id<<endl;
+    cout<<"Enter contact no.: "<<contact_no<<endl;
+    cout<<"Enter employee qualification: "<<qualification<<endl;
+    cout<<"Enter employee address: "<<address<<endl;
+    cout<<"Enter salary: "<<salary<<endl;
+}
+int employee::emp_id;
+
+
+
+int main()
+{
+    employee obj1;
+    obj1.display();
+
+    employee obj2("abc", 9001342490, "btech", "lane 123", 50000);
+    obj2.display();
+
+    employee obj3(obj2);
+    obj3.display();
+
+    employee *emp=new employee [3];
+    emp[0]=employee(obj2);
+    emp[1]=employee("hji", 134674550, "mtech", "lane 953", 100000);
+    for(int i=0; i<3;i++)
+        emp[i].display();
+    delete [] emp;
+
+    return 0;
+}
